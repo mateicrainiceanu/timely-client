@@ -4,10 +4,53 @@ body {
     'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
     sans-serif;
   -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+  height: 100vh;
+  background: linear-gradient(45deg, #6b0f1a, #0a1172);
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  animation: gradientAnimation 10s infinite alternate-reverse;
+  overflow-x: hidden;
+}
+
+@keyframes gradientAnimation {
+  0% {
+    background-position: 0% 50%;
+  }
+
+  100% {
+    background-position: 100% 50%;
+  }
 }
 
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
+
+main{
+  padding: 2% 5%;
+  color: azure;
+}
+
+.pad-2{
+  padding: 2%;
+}
+
+.navbar{
+  margin: 2% 5%;
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif
+}
+
+thead {
+  font-weight: bold;
+  border-bottom-width: 1px;
+}
+
+td{
+  padding: 1%;
+}
+
+.tabs{
+  width:50%
+}
+
