@@ -1,0 +1,15 @@
+.timer{
+    background-color: violet;
+    border-radius: 5px;
+    font-size: xx-large;
+    padding: 5%;
+    text-align: center;
+}
+
+button{
+    margin: 2% 2%;
+}
+
+.t-center{
+    text-align:center;
+}

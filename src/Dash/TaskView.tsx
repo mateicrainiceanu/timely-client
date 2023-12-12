@@ -1,6 +1,7 @@
 import React, {useEffect, useState} from "react";
-import ActivityRow from "./ActivityRow";
+import ActivityRow from "./TaskView/ActivityRow";
 import {getProxyy} from "../App";
+import PomTimer from "./Pomodoro/PomTimer";
 
 interface IProps {
 	setShowNewTask: Function;
@@ -12,7 +13,7 @@ function TaskView({setShowNewTask}: IProps) {
 	useEffect(() => {
 		updateData();
 		// eslint-disable-next-line
-	},[]);
+	}, []);
 
 	async function updateData() {
 		const lsToken = localStorage.getItem("token");
@@ -29,7 +30,15 @@ function TaskView({setShowNewTask}: IProps) {
 
 	return (
 		<div className="card pad-2">
-			<h4>Your Tasks</h4>
+			<div className="row">
+				<div className="col-lg-6">
+					<h2>Your Tasks</h2>
+					<hr />
+				</div>
+				<div className="col-lg-6">
+					<PomTimer></PomTimer>
+				</div>
+			</div>
 			<hr />
 			<table>
 				<thead>

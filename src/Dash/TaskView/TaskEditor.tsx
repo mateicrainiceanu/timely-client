@@ -1,6 +1,6 @@
 import React, {useState} from "react";
-import {getProxyy} from "../App";
-import {ITask} from "../types";
+import {getProxyy} from "../../App";
+import {ITask} from "../../types";
 
 interface IProps {
 	setShow: any;

@@ -1,9 +1,9 @@
-import {Stats} from "../types";
+import {Stats} from "../../types";
 import React, {useEffect, useState} from "react";
 
 interface IBtnProps {
 	actionStatus: Stats;
-	nextStatus: ()=>void;
+	nextStatus: () => void;
 }
 
 function ActionBtn(props: IBtnProps) {
@@ -18,7 +18,7 @@ function ActionBtn(props: IBtnProps) {
 				setBtnProps({color: "red", text: "End"});
 				break;
 			case Stats.Finished:
-				setBtnProps({color: "green", text: "Finished"});
+				setBtnProps({color: "lightgray", text: "Finished"});
 				break;
 			default:
 				setBtnProps({color: "orange", text: "ERROR"});

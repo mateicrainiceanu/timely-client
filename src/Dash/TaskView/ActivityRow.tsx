@@ -1,8 +1,8 @@
 import React, {useState} from "react";
-import {ITask, getEnumValueFromString} from "../types";
+import {ITask, getEnumValueFromString} from "../../types";
 import ActionBtn from "./ActionBtn";
-import {getProxyy} from "../App";
-import {statusStrings} from "../types";
+import {getProxyy} from "../../App";
+import {statusStrings} from "../../types";
 import TaskEditor from "./TaskEditor";
 interface IProps {
 	updateTasks: () => Promise<void>;
@@ -17,7 +17,7 @@ function ActivityRow({updateTasks, task}: IProps) {
 	const date = new Date(task.startDate);
 
 	const dateString = date.toTimeString().slice(0, 5) + " " + date.toLocaleDateString();
-	
+
 	async function deleteTask() {
 		const lsToken = localStorage.getItem("token");
 
@@ -83,7 +83,11 @@ function ActivityRow({updateTasks, task}: IProps) {
 				<td>{task.duration}</td>
 				<td>{dateString}</td>
 				<td>
-					<button className="btn" onClick={() => {setShowEdit(true)}}>
+					<button
+						className="btn"
+						onClick={() => {
+							setShowEdit(true);
+						}}>
 						<i className="bi bi-pencil-square"></i>
 					</button>
 
