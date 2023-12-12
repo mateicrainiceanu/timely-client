@@ -3,7 +3,7 @@ import Dash from "./Dash/Dash";
 import NavbarComponent from "./Navbar";
 import AuthenticationPage from "./Auth/Auth";
 
-import {IUser} from "./types";
+// import {IUser} from "./types";
 
 function getProxyy() {
 	return process.env.REACT_APP_DEV_PROXY;

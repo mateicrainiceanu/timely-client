@@ -3,6 +3,7 @@ import React, {useEffect, useState} from "react";
 
 interface IBtnProps {
 	actionStatus: Stats;
+	nextStatus: ()=>void;
 }
 
 function ActionBtn(props: IBtnProps) {
@@ -20,13 +21,13 @@ function ActionBtn(props: IBtnProps) {
 				setBtnProps({color: "green", text: "Finished"});
 				break;
 			default:
-				setBtnProps({color: "White", text: "ERROR"});
+				setBtnProps({color: "orange", text: "ERROR"});
 				break;
 		}
 	}, [props.actionStatus]);
 
 	return (
-		<button className="btn" style={{backgroundColor: btnProps.color}}>
+		<button onClick={props.nextStatus} className="btn" style={{backgroundColor: btnProps.color}}>
 			{btnProps.text}
 		</button>
 	);

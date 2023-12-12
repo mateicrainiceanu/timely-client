@@ -1,11 +1,15 @@
-import React from "react";
-import DayView from "./DayView";
+import React, {useState} from "react";
+import TaskView from "./TaskView";
+import NewTask from "./TaskEditor";
 
 function Dash() {
+	const [showNewTaskWindow, setShowNewTaskWindow] = useState(false);
+
 	return (
 		<>
-			<h3>Hello, user!</h3>
-			<DayView></DayView>
+			<h3>Hello</h3>
+			<TaskView setShowNewTask={setShowNewTaskWindow}></TaskView>
+			{showNewTaskWindow && <NewTask createMode={true} setShow={setShowNewTaskWindow} />}
 		</>
 	);
 }

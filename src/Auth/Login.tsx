@@ -9,7 +9,7 @@ function LoginForm({setUser}: IAuthProps) {
 
 	const handleLogin = (e: React.FormEvent) => {
 		e.preventDefault();
-		// Handle login logic here
+
 		const options = {
 			method: "POST",
 			headers: {

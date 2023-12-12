@@ -35,7 +35,7 @@ function RegisterForm({setUser}: IAuthProps) {
 			localStorage.setItem("token", data.token);
 		} else {
 			const errresp = await response.json();
-			alert(response.status + " : " + errresp.err);
+			alert(response.status + ": " + errresp.err);
 		}
 
 		// .then((response) => {
