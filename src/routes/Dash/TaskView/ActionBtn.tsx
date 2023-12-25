@@ -1,4 +1,4 @@
-import {Stats} from "../../types";
+import {Stats} from "../../../types";
 import React, {useEffect, useState} from "react";
 
 interface IBtnProps {

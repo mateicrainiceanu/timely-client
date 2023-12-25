@@ -48,4 +48,5 @@ export interface ITask {
     status: string;
     startDate: Date;
     duration: string;
+    showKey: number;
 }

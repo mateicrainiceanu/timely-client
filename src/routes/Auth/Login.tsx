@@ -1,7 +1,7 @@
 import React, {useState} from "react";
 import {Form, Button, Container, Row, Col} from "react-bootstrap";
-import { getProxyy } from "../App";
-import { IUser, IAuthProps } from "../types";
+import {getProxyy} from "../../App";
+import {IUser, IAuthProps} from "../../types";
 
 function LoginForm({setUser}: IAuthProps) {
 	const [email, setEmail] = useState("ion1@gmail.com");
@@ -24,10 +24,9 @@ function LoginForm({setUser}: IAuthProps) {
 			.then((data: IUser) => {
 				setUser({...data});
 				localStorage.setItem("token", data.token);
+				window.location.replace("/dash");
 			});
 	};
-
-
 
 	return (
 		<Container>
@@ -64,6 +63,6 @@ function LoginForm({setUser}: IAuthProps) {
 			</Row>
 		</Container>
 	);
-};
+}
 
 export default LoginForm;

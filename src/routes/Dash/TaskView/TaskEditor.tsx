@@ -1,6 +1,6 @@
 import React, {useState} from "react";
-import {getProxyy} from "../../App";
-import {ITask} from "../../types";
+import {getProxyy} from "../../../App";
+import {ITask} from "../../../types";
 
 interface IProps {
 	setShow: any;
@@ -10,13 +10,15 @@ interface IProps {
 
 function TaskEditor({setShow, createMode, task}: IProps) {
 	const tempDate = new Date(Date.now()).toISOString().slice(0, 16);
-	const taskDate = new Date(task!.startDate).toISOString().slice(0, 16);
 
-	const [taskData, setTaskData] = useState({
-		name: task?.name || "",
-		startDate: taskDate || tempDate,
-		duration: task?.duration || "00:00",
-	});
+	const taskStartingData = task ? task : {name: "", startDate: tempDate, duration: "01:00"};
+
+	if (task) {
+		const taskDate = new Date(task?.startDate).toISOString().slice(0, 16);
+		taskStartingData.startDate = taskDate;
+	}
+
+	const [taskData, setTaskData] = useState(taskStartingData);
 
 	function handleChange(e: any) {
 		setTaskData((prevData) => ({...prevData, [e.target.name]: e.target.value}));
@@ -78,7 +80,7 @@ function TaskEditor({setShow, createMode, task}: IProps) {
 				id="date-start"
 				name="startDate"
 				type="datetime-local"
-				value={taskData.startDate}
+				value={taskData.startDate as string}
 				onChange={handleChange}
 			/>
 			<label htmlFor="duration">Duration</label>

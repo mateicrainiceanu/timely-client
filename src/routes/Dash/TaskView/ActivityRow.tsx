@@ -1,22 +1,24 @@
-import React, {useState} from "react";
-import {ITask, getEnumValueFromString} from "../../types";
+import React, {useState, SetStateAction, Dispatch} from "react";
+import {ITask, getEnumValueFromString} from "../../../types";
 import ActionBtn from "./ActionBtn";
-import {getProxyy} from "../../App";
-import {statusStrings} from "../../types";
+import {getProxyy} from "../../../App";
+import {statusStrings} from "../../../types";
 import TaskEditor from "./TaskEditor";
+
 interface IProps {
 	updateTasks: () => Promise<void>;
 	task: ITask;
+	setChangeOrders: Dispatch<SetStateAction<{firstId: number; secondId: number; ready: boolean}>>;
 }
 
-function ActivityRow({updateTasks, task}: IProps) {
+function ActivityRow({updateTasks, task, setChangeOrders}: IProps) {
 	const [showEdit, setShowEdit] = useState(false);
 
 	const statusValue = getEnumValueFromString(task.status);
 
 	const date = new Date(task.startDate);
 
-	const dateString = date.toTimeString().slice(0, 5) + " " + date.toLocaleDateString();
+	// const dateString = date.toTimeString().slice(0, 5) + " " + date.toLocaleDateString().slice(0, 10);
 
 	async function deleteTask() {
 		const lsToken = localStorage.getItem("token");
@@ -75,27 +77,31 @@ function ActivityRow({updateTasks, task}: IProps) {
 				</tr>
 			)}
 
-			<tr>
-				<td>
-					<ActionBtn nextStatus={nextStatus} actionStatus={statusValue!}></ActionBtn>
-				</td>
-				<td>{task.name}</td>
-				<td>{task.duration}</td>
-				<td>{dateString}</td>
-				<td>
-					<button
-						className="btn"
-						onClick={() => {
-							setShowEdit(true);
-						}}>
-						<i className="bi bi-pencil-square"></i>
-					</button>
+			<td id={String(task.id)}>
+				<i id={String(task.id)} className="bi bi-arrows-expand"></i>
+			</td>
+			<td id={String(task.id)}>
+				<ActionBtn nextStatus={nextStatus} actionStatus={statusValue!}></ActionBtn>
+			</td>
+			<td id={String(task.id)}>{task.name}</td>
+			<td id={String(task.id)}>{task.duration}</td>
+			<td id={String(task.id)}>
+				<span>{date.toTimeString().slice(0, 5)}</span>
+				<span className="d-none d-md-block">{" " + date.toLocaleDateString().slice(0, 10)}</span>
+			</td>
+			<td id={String(task.id)}>
+				<button
+					className="btn"
+					onClick={() => {
+						setShowEdit(true);
+					}}>
+					<i className="bi bi-pencil-square"></i>
+				</button>
 
-					<button className="btn" onClick={deleteTask}>
-						<i className="bi bi-x-circle"></i>
-					</button>
-				</td>
-			</tr>
+				<button className="btn" onClick={deleteTask}>
+					<i className="bi bi-x-circle"></i>
+				</button>
+			</td>
 		</>
 	);
 }

@@ -6,8 +6,6 @@ function PomTimer() {
 	const [active, setActive] = useState(false);
 
 	setTimeout(() => {
-		console.log("StartTout: " + Date());
-
 		var remSec = timeLeft.sec;
 		var remMin = timeLeft.min;
 
@@ -54,11 +52,11 @@ function PomTimer() {
 						{active ? "Stop" : "Start"}
 					</button>
 
-					<button className="btn btn-warning" onClick={resetTimer}>
+					<button className="btn btn-warning margin-2" onClick={resetTimer}>
 						Reset
 					</button>
 
-					<button className="btn btn-secondary" onClick={breakTimer}>
+					<button className="btn btn-secondary margin-2" onClick={breakTimer}>
 						Break
 					</button>
 					{/* <a href="/">Find out more</a> */}

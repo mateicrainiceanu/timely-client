@@ -1,0 +1,37 @@
+
+#hero {
+    height: 70vh;
+}
+
+.hero-content {
+    text-align: center;
+}
+
+.hero-content h1{
+    font-size: 10vh;
+}
+
+.hero-content h2{
+    font-size: 6vh;
+}
+
+h1, h2, h3, h4, h5, h6 {
+    font-weight: bolder;
+}
+
+.btn-get-started {
+    background-color: lightpink;
+    color: purple;
+    margin: 1%;
+    font-weight: bold;
+}
+
+#about {
+    width: 50vw;
+}
+
+@media (max-width: 600px) {
+    #about {
+        width: 70vw;
+    }
+}

@@ -1,5 +1,5 @@
 import React, {useState} from "react";
-import TaskView from "./TaskView";
+import TaskView from "./TaskView/TaskView";
 import NewTask from "./TaskView/TaskEditor";
 
 function Dash() {

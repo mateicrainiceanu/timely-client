@@ -1,9 +1,9 @@
 // RegisterForm.tsx
 import React, {useState} from "react";
 import {Form, Button, Container, Row, Col} from "react-bootstrap";
-import {getProxyy} from "../App";
+import {getProxyy} from "../../App";
 
-import {IAuthProps, IUser} from "../types";
+import {IAuthProps, IUser} from "../../types";
 
 function RegisterForm({setUser}: IAuthProps) {
 	const [email, setEmail] = useState("");
@@ -33,6 +33,7 @@ function RegisterForm({setUser}: IAuthProps) {
 			const data: IUser = await response.json();
 			setUser({...data});
 			localStorage.setItem("token", data.token);
+			window.location.replace("/dash");
 		} else {
 			const errresp = await response.json();
 			alert(response.status + ": " + errresp.err);

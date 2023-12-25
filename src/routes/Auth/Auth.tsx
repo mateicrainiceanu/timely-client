@@ -3,15 +3,15 @@ import React, {useState} from "react";
 import {Tabs, Tab} from "react-bootstrap";
 import LoginForm from "./Login";
 import RegisterForm from "./Register";
-import {IAuthProps} from "../types"; 
+import {IAuthProps} from "../../types";
 
-function AuthenticationPage ({setUser}: IAuthProps) {
+function AuthenticationPage({setUser}: IAuthProps) {
 	const [activeTab, setActiveTab] = useState<string>("login");
 
 	const handleTabSelect = (key: string | null) => {
 		if (key) {
 			setActiveTab(key);
-		};
+		}
 	};
 
 	return (
@@ -42,6 +42,6 @@ function AuthenticationPage ({setUser}: IAuthProps) {
 			</Tabs>
 		</div>
 	);
-};
+}
 
 export default AuthenticationPage;
