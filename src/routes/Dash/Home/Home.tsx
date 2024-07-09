@@ -25,18 +25,6 @@ function Home() {
 						worry about your assignments, breaks and without adding more demanding apps to your computer.
 					</p>
 				</div>
-				<div className="half-width">
-					<h3 className="text-center">Team</h3>
-					<hr />
-					<p>
-						Timely is a product designd by students for students. Our team consists of two high-school students that
-						worked tirelessly to write each line of code for this app, so that they themselves will use it to track
-						their school progress and projects they have been working on.
-						<br />
-						Feel free to contact us with sugestions, questions and other ways to improve our app or to keep us
-						motivated.
-					</p>
-				</div>
 			</section>
 
 		</>
