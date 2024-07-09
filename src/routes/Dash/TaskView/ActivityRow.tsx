@@ -69,13 +69,11 @@ function ActivityRow({updateTasks, task, setChangeOrders}: IProps) {
 
 	return (
 		<>
-			{showEdit && (
-				<tr>
-					<td>
-						<TaskEditor setShow={setShowEdit} createMode={false} task={task} />
-					</td>
-				</tr>
-			)}
+			{showEdit && 
+				<td style={{width: '0'}}>
+					<TaskEditor setShow={setShowEdit} createMode={false} task={task} />
+				</td>
+			}
 
 			<td id={String(task.id)}>
 				<i id={String(task.id)} className="bi bi-arrows-expand"></i>

@@ -45,6 +45,7 @@ function TaskView({setShowNewTask}: IProps) {
 			const newShowKeyForDragged = getNewShowKeyForDragged(changeOrders.secondId);
 
 			const draggedId = changeOrders.firstId;
+
 			const lsToken = localStorage.getItem("token");
 
 			const options = {
@@ -88,16 +89,35 @@ function TaskView({setShowNewTask}: IProps) {
 	}
 
 	function handleDragLeave(e: any) {
-		console.log(e);
 		e.target.classList.remove("dragged-over");
 	}
 
 	function handleDrop(e: any) {
-		console.log(e);
 		e.target.classList.remove("dragged-over");
-
 		const id = e.target.id === "last" ? -1 : Number(e.target.id);
 		setChangeOrders((prevData) => ({...prevData, secondId: id, ready: true}));
+	}
+
+	//BTN CONTROL PANEL
+
+	async function handleArrange() {
+		const lsToken = localStorage.getItem("token");
+		const options = {
+			method: "POST",
+			headers: {
+				"Content-Type": "application/json",
+				Accept: "application/json",
+			},
+			body: JSON.stringify({token: lsToken}),
+		};
+
+		const response = await fetch(getProxyy() + "/arragebyduration", options);
+
+		if (response.status !== 201) {
+			alert("Error");
+		}
+
+		updateData();
 	}
 
 	return (
@@ -154,10 +174,12 @@ function TaskView({setShowNewTask}: IProps) {
 			</table>
 
 			<div className="table-buttons">
-				<button className="btn btn-dark horiz-spacing" onClick={() => setShowNewTask(true)}>
+				<button className="btn btn-dark horiz-spacing mt-1" onClick={() => setShowNewTask(true)}>
 					Add
 				</button>
-				<button className="btn btn-warning horiz-spacing">Pause</button>
+				<button className="btn btn-secondary horiz-spacing mt-1" onClick={handleArrange}>
+					Arrange
+				</button>
 			</div>
 		</div>
 	);

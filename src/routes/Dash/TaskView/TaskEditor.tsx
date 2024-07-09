@@ -8,19 +8,31 @@ interface IProps {
 	task?: ITask;
 }
 
-function TaskEditor({setShow, createMode, task}: IProps) {
-	const tempDate = new Date(Date.now()).toISOString().slice(0, 16);
+function formatDate(date: Date): string {
+	const dt = new Date(date);
+	var string = dt.getFullYear() + "-";
+	string += (dt.getMonth() < 10 ? "0" : "") + (dt.getMonth() + 1) + "-";
+	string += (dt.getDate() < 10 ? "0" : "") + dt.getDate() + "T";
+	string += (dt.getHours() < 10 ? "0" : "") + dt.getHours() + ":";
+	string += (dt.getMinutes() < 10 ? "0" : "") + dt.getMinutes();
+	return(string);
+}
 
-	const taskStartingData = task ? task : {name: "", startDate: tempDate, duration: "01:00"};
+function TaskEditor({setShow, createMode, task}: IProps) {
+	const tempDate = formatDate(new Date(Date.now()));
+
+	const taskStartingData = task ? task : {name: "", startDate: tempDate , duration: "01:00"};
 
 	if (task) {
-		const taskDate = new Date(task?.startDate).toISOString().slice(0, 16);
+		const taskDate = formatDate(new Date(taskStartingData.startDate));
 		taskStartingData.startDate = taskDate;
 	}
 
 	const [taskData, setTaskData] = useState(taskStartingData);
 
 	function handleChange(e: any) {
+		console.log(e.target.value);
+		
 		setTaskData((prevData) => ({...prevData, [e.target.name]: e.target.value}));
 	}
 
